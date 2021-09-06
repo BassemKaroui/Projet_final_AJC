@@ -1,0 +1,124 @@
+<!-- On hérite de la page de base -->
+{% extends 'base.html' %}
+
+
+
+<!-- Ajout du contenu -->
+{% block content %}
+
+<div class="container-fluid d-flex flex-row justify-content-around align-items-center">
+
+    <div class="input-group d-flex flex-column align-items-center">
+        <div id="carouselExampleControls" class="carousel ms-5" data-bs-ride="false">
+            <div class="carousel-inner d-flex flex-row align-items-center">
+                <div class="carousel-item active">
+                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="d-block w-100"
+                        alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="w-50 d-flex flex-column align-items-center">
+        <ul class="list-group w-50">
+            <li
+                class="list-group-item d-flex text-center justify-content-center align-items-center list-group-item-secondary">
+                <b>Human Protein</b>
+            </li>
+            <li id="0"
+                class="list-group-item d-flex justify-content-between align-items-center list-group-item-success">
+                0: Mitochondria
+                <span class="badge bg-success rounded-pill">found</span>
+            </li>
+            <li id="1" class="list-group-item d-flex justify-content-between align-items-center">
+                1: Nuclear bodies
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+            <li id="2"
+                class="list-group-item d-flex justify-content-between align-items-center list-group-item-success">
+                2: Nucleoli
+                <span class="badge bg-success rounded-pill">found</span>
+            </li>
+            <li id="3" class="list-group-item d-flex justify-content-between align-items-center">
+                3: Golgi apparatus
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+            <li id="4" class="list-group-item d-flex justify-content-between align-items-center">
+                4: Nucleoplasm
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+            <li id="5" class="list-group-item d-flex justify-content-between align-items-center">
+                5: Nucleoli fibrillar center
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+            <li id="6" class="list-group-item d-flex justify-content-between align-items-center">
+                6: Cytosol
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+            <li id="7" class="list-group-item d-flex justify-content-between align-items-center">
+                7: Plasma membrane
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+            <li id="8" class="list-group-item d-flex justify-content-between align-items-center">
+                8: Centrosome
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+            <li id="9" class="list-group-item d-flex justify-content-between align-items-center">
+                9: Nuclear speckles
+                <span class="badge bg-success rounded-pill"></span>
+            </li>
+        </ul>
+        <span><span>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block script %}
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+    })
+
+
+
+</script>
+
+
+{% endblock %}

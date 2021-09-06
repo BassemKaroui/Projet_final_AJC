@@ -1,0 +1,158 @@
+
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(228, 228, 228);
+    box-sizing: border-box;
+  }
+  
+  .page {
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+  }
+  
+  .header, .footer {
+    background-color:#ffffff;
+    color: #024184;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+  }
+  
+  .header {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+    /* height: 80px; */
+  }
+  
+  .footer {
+    text-align: center;
+    clear: both;
+    position: relative;
+    /* height: 50px; */
+    margin-top: 2px;
+  }
+  
+  .content {
+    background-color: rgb(37, 37, 37);
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nav-secondary {
+    background: linear-gradient(to right,#00244d 0%,#024184 100%);
+    color: rgb(255, 255, 255);
+    height: 30px
+  }
+
+  th:hover {
+    background-color: rgba(142, 160, 146, 0.5);
+  }
+  
+  tr, td {
+    padding:10px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.767);
+    background-color: rgba(79, 177, 103, 0.541);
+  }
+  
+  tr:hover {
+    background-color: teal;
+  }
+  
+  
+  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+  
+  .card-header {
+    background-color: #ffc107;
+  }
+  
+  .card {
+    border-color: #d1d1d1;
+  }
+  
+  .card:hover {
+    border-color: #ffc107;
+    background-color: #ffe69a;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  a.custom-card, a.custom-card:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a, a:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .checked {
+    color: #ffc107;
+  }
+
+  .pic {
+    border: solid #969696 1px;
+  }
+
+
+  .carousel-inner {
+    min-height: 700px !important;
+    max-height: 700px !important;
+  }

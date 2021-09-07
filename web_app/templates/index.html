@@ -8,96 +8,84 @@
 
 <div class="container-fluid d-flex flex-row justify-content-around align-items-center">
 
-    <div class="input-group d-flex flex-column align-items-center">
+    <div class="input-group d-flex flex-column align-items-end w-50 me-5">
         <div id="carouselExampleControls" class="carousel ms-5" data-bs-ride="false">
             <div class="carousel-inner d-flex flex-row align-items-center">
                 <div class="carousel-item active">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="d-block w-100"
-                        alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png"
-                        class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg"
-                        class="d-block w-100" alt="...">
+                    <img id="image1" src="" class="d-block w-100 pic" alt="...">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
+            <button id="btn_prev" class="carousel-control-prev" type="button">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
+            <button id="btn_next" class="carousel-control-next" type="button">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
     </div>
 
-    <div class="w-50 d-flex flex-column align-items-center">
+    <div class="w-50 d-flex flex-column align-items-start ms-5">
         <ul class="list-group w-50">
             <li
-                class="list-group-item d-flex text-center justify-content-center align-items-center list-group-item-secondary">
+                class="list-group-item d-flex text-center justify-content-center align-items-center list-group-item-dark">
                 <b>Human Protein</b>
             </li>
-            <li id="0"
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-success">
-                0: Mitochondria
-                <span class="badge bg-success rounded-pill">found</span>
+            <li id="0" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">0: Mitochondria</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="1" class="list-group-item d-flex justify-content-between align-items-center">
-                1: Nuclear bodies
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">1: Nuclear bodies</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
-            <li id="2"
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-success">
-                2: Nucleoli
-                <span class="badge bg-success rounded-pill">found</span>
+            <li id="2" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">2: Nucleoli</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="3" class="list-group-item d-flex justify-content-between align-items-center">
-                3: Golgi apparatus
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">3: Golgi apparatus</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="4" class="list-group-item d-flex justify-content-between align-items-center">
-                4: Nucleoplasm
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">4: Nucleoplasm</i></span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="5" class="list-group-item d-flex justify-content-between align-items-center">
-                5: Nucleoli fibrillar center
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">5: Nucleoli fibrillar center</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="6" class="list-group-item d-flex justify-content-between align-items-center">
-                6: Cytosol
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">6: Cytosol</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="7" class="list-group-item d-flex justify-content-between align-items-center">
-                7: Plasma membrane
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">7: Plasma membrane</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="8" class="list-group-item d-flex justify-content-between align-items-center">
-                8: Centrosome
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">8: Centrosome</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
             <li id="9" class="list-group-item d-flex justify-content-between align-items-center">
-                9: Nuclear speckles
-                <span class="badge bg-success rounded-pill"></span>
+                <span class="flex-grow-1">9: Nuclear speckles</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
         </ul>
-        <span><span>
-
-
-
-
-
-
-
-
+        <button id="btn_pred" class="btn btn-success mt-4">Predict</button>
 
     </div>
-
 
 </div>
 
@@ -110,12 +98,116 @@
 
 <script>
 
+    var imgID = 0;
+    var images;
+
+    const next = document.getElementById('btn_next');
+    const prev = document.getElementById('btn_prev');
+    const pred = document.getElementById('btn_pred');
+
 
     $(document).ready(function () {
-
-
+        getImages();
     })
 
+    document.addEventListener('click', function (e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement, text = target.textContent || target.innerText;
+        if (target.classList.contains("selected")) {
+            target.classList.remove("selected")
+            loadImage(images["Image"][imgID])
+        } else if (target.classList.contains("prediction")) {
+            $('.list-group-item').removeClass('selected');
+            target.classList.add("selected")
+            loadImage("4029")
+        }
+    }, false);
+
+    next.addEventListener('click', event => {
+        if (imgID < images['Image'].length - 1) {
+            imgID += 1
+            loadImage(images["Image"][imgID]);
+            resetCSS()
+        }
+    });
+
+    prev.addEventListener('click', event => {
+        if (imgID != 0) {
+            imgID -= 1
+            loadImage(images["Image"][imgID]);
+            resetCSS()
+        }
+    });
+
+    pred.addEventListener('click', event => {
+        predictClasses(images["Image"][imgID])
+    });
+
+    function getImages() {
+        $.ajax({
+            url: "/api/get_images",
+            dataType: "json",
+            type: "GET",
+            success: function (response) {
+                images = response
+                loadImage(images["Image"][imgID]);
+                resetCSS();
+            }
+        })
+    }
+
+    function loadImage(image) {
+        var img = document.getElementById("image1")
+        img.setAttribute("src", "/images/" + image + ".png")
+    }
+
+    function resetCSS() {
+        $('.list-group-item').removeClass('list-group-item-primary');
+        $('.list-group-item').removeClass('list-group-item-success');
+        $('.list-group-item').removeClass('list-group-item-warning');
+        $('.list-group-item').removeClass('prediction');
+        $('.list-group-item').removeClass('selected');
+        $('.bg-primary').addClass('visually-hidden');
+        $('.bg-success').addClass('visually-hidden');
+
+        var labels = images["Label"][imgID].split(' ')
+        labels.forEach(element => {
+            var itemlist = document.getElementById(element)
+            itemlist.classList.add("list-group-item-primary")
+            $('#' + element).find('.bg-primary').removeClass('visually-hidden');
+        });
+    }
+
+    function predictClasses(image) {
+        var json = {};
+        json["Image"] = image
+        var datasJson = JSON.stringify(json);
+        console.log(datasJson)
+
+        $.ajax({
+            url: "/api/predict",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            type: "POST",
+            data: datasJson,
+            success: function (response) {
+                console.log(response)
+                $.each(response.classes, function (index, img_class) {
+                    var elt = document.getElementById(img_class)
+                    if (elt.classList.contains("list-group-item-primary")) {
+                        elt.classList.add("list-group-item-success")
+                    } else {
+                        elt.classList.add("list-group-item-warning")
+                    }
+                    $('#' + img_class).find('.bg-success').removeClass('visually-hidden');
+                    elt.classList.add("prediction")
+                });
+            },
+            error: function () {
+                console.log("Error")
+            }
+        });
+    }
 
 
 </script>

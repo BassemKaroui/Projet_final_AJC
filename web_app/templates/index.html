@@ -6,10 +6,10 @@
 <!-- Ajout du contenu -->
 {% block content %}
 
-<div class="container-fluid d-flex flex-row justify-content-around align-items-center">
+<div class="container-fluid d-flex flex-row justify-content-around mt-5">
 
-    <div class="input-group d-flex flex-column align-items-end w-50 me-5">
-        <div id="carouselExampleControls" class="carousel ms-5" data-bs-ride="false">
+    <div class="w-50 input-group d-flex flex-column align-items-end me-5">
+        <div id="carouselExampleControls" class="carousel" data-bs-ride="false">
             <div class="carousel-inner d-flex flex-row align-items-center">
                 <div class="carousel-item active">
                     <img id="image1" src="" class="d-block w-100 pic" alt="...">
@@ -24,10 +24,17 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        <!-- <div class="w-100 btn_container d-flex flex-column align-items-center">
+            <button id="btn_upload" class="btn btn-primary w-100"><i class="fa fa-plus"></i></button>
+            <form method="post" enctype="multipart/form-data" class="input-group mb-3 mt-4">
+                <input type="file" name="client_img" class="form-control" id="inputGroupFile02">
+                <button id="btn_upload" type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div> -->
     </div>
 
     <div class="w-50 d-flex flex-column align-items-start ms-5">
-        <ul class="list-group w-50">
+        <ul class="list-group w-100">
             <li
                 class="list-group-item d-flex text-center justify-content-center align-items-center list-group-item-dark">
                 <b>Human Protein</b>
@@ -83,7 +90,9 @@
                 <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
             </li>
         </ul>
-        <button id="btn_pred" class="btn btn-success mt-4">Predict</button>
+        <div class="btn_container d-flex flex-column align-items-center justify-content-center w-100">
+            <button id="btn_pred" class="btn btn-success mt-4">Predict</button>
+        </div>
 
     </div>
 
@@ -104,7 +113,7 @@
     const next = document.getElementById('btn_next');
     const prev = document.getElementById('btn_prev');
     const pred = document.getElementById('btn_pred');
-
+    // const upload = document.getElementById('btn_upload');
 
     $(document).ready(function () {
         getImages();
@@ -116,12 +125,23 @@
         if (target.classList.contains("selected")) {
             target.classList.remove("selected")
             loadImage(images["Image"][imgID])
+        } else if (target.parentNode.classList.contains("selected")) {
+            target.parentNode.classList.remove("selected")
+            loadImage(images["Image"][imgID])
         } else if (target.classList.contains("prediction")) {
             $('.list-group-item').removeClass('selected');
             target.classList.add("selected")
-            loadImage("4029")
+            loadImage("protein_" + target.getAttribute("id"))
+        } else if (target.parentNode.classList.contains("prediction")) {
+            $('.list-group-item').removeClass('selected');
+            target.parentNode.classList.add("selected")
+            loadImage("protein_" + target.parentNode.getAttribute("id"))
         }
     }, false);
+
+    // upload.addEventListener('click', event => {
+    //     console.log("test")
+    // });
 
     next.addEventListener('click', event => {
         if (imgID < images['Image'].length - 1) {
@@ -159,14 +179,11 @@
     function loadImage(image) {
         var img = document.getElementById("image1")
         img.setAttribute("src", "/images/" + image + ".png")
+        // img.setAttribute("src", "/uploads/" + "IMG_20210909_105343.jpg")
     }
 
     function resetCSS() {
-        $('.list-group-item').removeClass('list-group-item-primary');
-        $('.list-group-item').removeClass('list-group-item-success');
-        $('.list-group-item').removeClass('list-group-item-warning');
-        $('.list-group-item').removeClass('prediction');
-        $('.list-group-item').removeClass('selected');
+        $('.list-group-item').removeClass('selected prediction list-group-item-warning list-group-item-success list-group-item-primary');
         $('.bg-primary').addClass('visually-hidden');
         $('.bg-success').addClass('visually-hidden');
 
@@ -208,7 +225,6 @@
             }
         });
     }
-
 
 </script>
 

@@ -1,0 +1,232 @@
+<!-- On hérite de la page de base -->
+{% extends 'base.html' %}
+
+
+
+<!-- Ajout du contenu -->
+{% block content %}
+
+<div class="container-fluid d-flex flex-row justify-content-around mt-5">
+
+    <div class="w-50 input-group d-flex flex-column align-items-end me-5">
+        <div id="carouselExampleControls" class="carousel" data-bs-ride="false">
+            <div class="carousel-inner d-flex flex-row align-items-center">
+                <div class="carousel-item active">
+                    <img id="image1" src="" class="d-block w-100 pic" alt="...">
+                </div>
+            </div>
+            <button id="btn_prev" class="carousel-control-prev" type="button">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button id="btn_next" class="carousel-control-next" type="button">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- <div class="w-100 btn_container d-flex flex-column align-items-center">
+            <button id="btn_upload" class="btn btn-primary w-100"><i class="fa fa-plus"></i></button>
+            <form method="post" enctype="multipart/form-data" class="input-group mb-3 mt-4">
+                <input type="file" name="client_img" class="form-control" id="inputGroupFile02">
+                <button id="btn_upload" type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div> -->
+    </div>
+
+    <div class="w-50 d-flex flex-column align-items-start ms-5">
+        <ul class="list-group w-100">
+            <li
+                class="list-group-item d-flex text-center justify-content-center align-items-center list-group-item-dark">
+                <b>Human Protein</b>
+            </li>
+            <li id="0" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">0: Mitochondria</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="1" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">1: Nuclear bodies</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="2" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">2: Nucleoli</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="3" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">3: Golgi apparatus</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="4" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">4: Nucleoplasm</i></span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="5" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">5: Nucleoli fibrillar center</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="6" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">6: Cytosol</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="7" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">7: Plasma membrane</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="8" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">8: Centrosome</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+            <li id="9" class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">9: Nuclear speckles</span>
+                <span class="badge bg-primary rounded-pill visually-hidden">ground truth</span>
+                <span class="badge bg-success rounded-pill visually-hidden">prediction</span>
+            </li>
+        </ul>
+        <div class="btn_container d-flex flex-column align-items-center justify-content-center w-100">
+            <button id="btn_pred" class="btn btn-success mt-4">Predict</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block script %}
+
+<script>
+
+    var imgID = 0;
+    var images;
+
+    const next = document.getElementById('btn_next');
+    const prev = document.getElementById('btn_prev');
+    const pred = document.getElementById('btn_pred');
+    // const upload = document.getElementById('btn_upload');
+
+    $(document).ready(function () {
+        getImages();
+    })
+
+    document.addEventListener('click', function (e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement, text = target.textContent || target.innerText;
+        if (target.classList.contains("selected")) {
+            target.classList.remove("selected")
+            loadImage(images["Image"][imgID])
+        } else if (target.parentNode.classList.contains("selected")) {
+            target.parentNode.classList.remove("selected")
+            loadImage(images["Image"][imgID])
+        } else if (target.classList.contains("prediction")) {
+            $('.list-group-item').removeClass('selected');
+            target.classList.add("selected")
+            loadImage("protein_" + target.getAttribute("id"))
+        } else if (target.parentNode.classList.contains("prediction")) {
+            $('.list-group-item').removeClass('selected');
+            target.parentNode.classList.add("selected")
+            loadImage("protein_" + target.parentNode.getAttribute("id"))
+        }
+    }, false);
+
+    // upload.addEventListener('click', event => {
+    //     console.log("test")
+    // });
+
+    next.addEventListener('click', event => {
+        if (imgID < images['Image'].length - 1) {
+            imgID += 1
+            loadImage(images["Image"][imgID]);
+            resetCSS()
+        }
+    });
+
+    prev.addEventListener('click', event => {
+        if (imgID != 0) {
+            imgID -= 1
+            loadImage(images["Image"][imgID]);
+            resetCSS()
+        }
+    });
+
+    pred.addEventListener('click', event => {
+        predictClasses(images["Image"][imgID])
+    });
+
+    function getImages() {
+        $.ajax({
+            url: "/api/get_images",
+            dataType: "json",
+            type: "GET",
+            success: function (response) {
+                images = response
+                loadImage(images["Image"][imgID]);
+                resetCSS();
+            }
+        })
+    }
+
+    function loadImage(image) {
+        var img = document.getElementById("image1")
+        img.setAttribute("src", "/images/" + image + ".png")
+        // img.setAttribute("src", "/uploads/" + "IMG_20210909_105343.jpg")
+    }
+
+    function resetCSS() {
+        $('.list-group-item').removeClass('selected prediction list-group-item-warning list-group-item-success list-group-item-primary');
+        $('.bg-primary').addClass('visually-hidden');
+        $('.bg-success').addClass('visually-hidden');
+
+        var labels = images["Label"][imgID].split(' ')
+        labels.forEach(element => {
+            var itemlist = document.getElementById(element)
+            itemlist.classList.add("list-group-item-primary")
+            $('#' + element).find('.bg-primary').removeClass('visually-hidden');
+        });
+    }
+
+    function predictClasses(image) {
+        var json = {};
+        json["Image"] = image
+        var datasJson = JSON.stringify(json);
+        console.log(datasJson)
+
+        $.ajax({
+            url: "/api/predict",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            type: "POST",
+            data: datasJson,
+            success: function (response) {
+                console.log(response)
+                $.each(response.classes, function (index, img_class) {
+                    var elt = document.getElementById(img_class)
+                    if (elt.classList.contains("list-group-item-primary")) {
+                        elt.classList.add("list-group-item-success")
+                    } else {
+                        elt.classList.add("list-group-item-warning")
+                    }
+                    $('#' + img_class).find('.bg-success').removeClass('visually-hidden');
+                    elt.classList.add("prediction")
+                });
+            },
+            error: function () {
+                console.log("Error")
+            }
+        });
+    }
+
+</script>
+
+
+{% endblock %}

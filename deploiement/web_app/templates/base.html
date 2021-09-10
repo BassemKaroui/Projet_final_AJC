@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CHU Lille</title>
+
+    <!-- IMPORT DE BOOTSTRAP CSS (V5) -->
+    <!-- DOCUMENTATION : https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- STYLE POUR LES TABLEAUX DYNAMIQUES-->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/dt-1.10.22/af-2.3.5/b-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.css" />
+
+    <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+    <link rel="shortcut icon" href="https://viskaliacc.fr/style/images/logo/favicon-chulille.png">
+
+    <!-- STYLE PERSONNALISE -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- POUR LA GESTION DES ERREURS SUR LES FORMULAIRES -->
+    <style>
+        .error {
+            color: #ff0000;
+        }
+    </style>
+
+</head>
+
+
+<div class="header">
+    <div id="nav-bar" class="w-100">
+        <div id="nav-belt" class="nav-belt d-flex flex-row justify-content-around align-items-center">
+            <div class="nav-left w-25 m-2">
+                <div id="logo">
+                    <span>
+                        <img class="" src="https://chu-lille.fr/wp-content/uploads/2018/12/CHU_Lille_Logo.png"
+                            height="100px">
+                        </img>
+                    </span>
+                </div>
+            </div>
+
+            <div class=" nav-fill w-50">
+                <div class="">
+                    Proof of Concept
+                </div>
+            </div>
+
+            <div class="nav-right w-25">
+                <img src="https://s3-eu-west-1.amazonaws.com/th-prod/booth/0001/84/a67809a538e6272f7275fef9f09e1cb32e479f4e.jpeg"
+                    height="150px">
+                </img>
+            </div>
+        </div>
+
+        <div id="nav-main" class="nav-secondary d-flex flex-row justify-content-center align-items-center p-4">
+            <a href="/" class="mt-1 ms-4 me-4">
+                <h6>Protein Identifier</h6>
+            </a>
+        </div>
+    </div>
+</div>
+
+<body>
+
+    <!-- ON INSERT ICI LE CODE DU CONTENU DE LA PAGE -->
+    {% block content %}{% endblock %}
+
+    <!-- IMPORT DE JQUERY (LIBRAIRIE JAVASCRIPT) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
+    <!-- LIBRAIRIE PERMETTANT DE CREER DES GRAPHIQUES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+    <!-- IMPORT DES FICHIERS JAVASCRIPT DE BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- DATATABLE.NET : LIBRAIRIE PERMETTANT DE GERER DES TABLEAUX -->
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/dt-1.10.22/af-2.3.5/b-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
+
+    <!-- GESTION DES ICONES DU MENU -->
+    <!-- <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace()
+    </script> -->
+
+    <!-- GESTION GRAPHES -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- TensforFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+
+    <!-- EMPLACEMENT DES SCRIPTS JAVASCRIPTS PERSONNALISES PAR PAGE -->
+    {% block script %}{% endblock %}
+
+</body>
+
+<div class="footer d-flex justify-content-around">
+    <div></div>
+    <div></div>
+</div>
+
+</html>

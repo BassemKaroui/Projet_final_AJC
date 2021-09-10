@@ -44,14 +44,15 @@ def create_app():
             super().__init__()
             resnext = torch.hub.load(
                 'facebookresearch/semi-supervised-ImageNet1K-models', 'resnext101_32x8d_swsl')
-            self.resnext = nn.Sequential(*list(resnext.children())[:-2])
+            self.resnext = nn.Sequential(*list(resnext.children())[:-3])
             self.resnext.requires_grad_(False)
+            self.dropout = nn.Dropout(0.25)
             self.attention_nn = nn.Sequential(
-                nn.Linear(2048, 10),
+                nn.Linear(1024, 10),
                 nn.Softmax(dim=1)
             )
             self.multi_label_classifier = nn.Conv1d(
-                10, 10, kernel_size=2048, groups=10)
+                10, 10, kernel_size=1024, groups=10)
             self.top = nn.ModuleList(
                 [self.attention_nn, self.multi_label_classifier])
 
@@ -62,6 +63,7 @@ def create_app():
             # shape: batch_size x (HxW) x 2048
             encoded_imgs = encoded_imgs.reshape(
                 *encoded_imgs.shape[:2], -1).swapaxes(1, 2)
+            encoded_imgs = self.dropout(encoded_imgs)
             # shape: batch_size x (HxW) x 10
             weights = self.attention_nn(encoded_imgs)
             encoded_imgs = encoded_imgs.unsqueeze(dim=1).repeat(
@@ -78,7 +80,7 @@ def create_app():
     model = ModelWithAttention()
     model.to(device)
     model.load_state_dict(torch.load(
-        'web_app/model_checkpoints/model_epoch_32.pth'))
+        './web_app/model_checkpoints/model_3/model_epoch_25.pth'))
 
     thresholds = torch.tensor([0.866, 0.28, 0.95, 0.27599999, 0.52200001,
                               0.45899999, 0.68699998, 0.81699997, 0.75999999, 0.61299998], device=device)
@@ -106,7 +108,7 @@ def create_app():
             labels = probs.argmax(dim=-1, keepdim=True)
         labels = labels.cpu()
         weights = weights.squeeze()[labels].unsqueeze(
-            dim=0).reshape(1, labels.shape[0], 16, 16).cpu()
+            dim=0).reshape(1, labels.shape[0], 32, 32).cpu()
         upsampled_weights = F.upsample(weights, size=512, mode='bilinear')
         img = img.cpu()
         for i, protein_idx in enumerate(labels):

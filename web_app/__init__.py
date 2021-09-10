@@ -80,8 +80,8 @@ def create_app():
     model.load_state_dict(torch.load(
         'web_app/model_checkpoints/model_epoch_32.pth'))
 
-    thresholds = torch.tensor(
-        [0.21, 0.2, 0.29, 0.32, 0.52, 0.14, 0.35, 0.31, 0.22, 0.08], device=device)
+    thresholds = torch.tensor([0.866, 0.28, 0.95, 0.27599999, 0.52200001,
+                              0.45899999, 0.68699998, 0.81699997, 0.75999999, 0.61299998], device=device)
 
     def visualize_att_mask(img_path, model, root_path, device=device, threshold=thresholds):
 
